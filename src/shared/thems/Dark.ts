@@ -1,5 +1,5 @@
 import { createTheme} from '@mui/material';
-import { blueGrey, grey } from '@mui/material/colors';
+import { blueGrey } from '@mui/material/colors';
 
 
 
@@ -7,20 +7,22 @@ import { blueGrey, grey } from '@mui/material/colors';
 export const darkTheme = createTheme ({
     palette: {
         primary: {
-          main: grey[800],
-          dark: grey[900],
-          light: grey[500],
-          contrastText: '#ffffff',
+          main: blueGrey[800],
+          dark: blueGrey[900],
+          light: blueGrey[500],
+          contrastText: '#cfd8dc',
+
         },
         secondary: {
-            main: blueGrey[800],
-            dark: blueGrey[900],
-            light: blueGrey[500],
-            contrastText: '#ffffff',
+            main: '#b0bec5',
+            dark: '#455a64',
+            light: '#78909c',
+            contrastText: '#cfd8dc',
+
         },
         background: {
-            paper: blueGrey[800],
-            default: blueGrey[900],
+            paper: '#9e9e9e',
+            default: '#616161',
         }
       },
 });
