@@ -1,12 +1,6 @@
 import React, { createContext, useCallback, useContext, useState } from "react";
 
 
-interface IDrawerContexData {
-    isDrawerOpen: boolean;
-    isDrawerOptions: boolean;
-    toggleDrawer: () => void;
-}
-
 interface IDrawerProviderProps {
     children: React.ReactNode
 }

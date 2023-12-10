@@ -14,7 +14,7 @@ interface IThemeProviderProps {
 
 const ThemeContext = createContext({} as IThemeContexData);
 
-export const useAppContext = () => {
+export const useAppThemeContext = () => {
     return useContext(ThemeContext)
 }
 
