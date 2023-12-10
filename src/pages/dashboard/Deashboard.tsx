@@ -1,4 +1,4 @@
-import { BarraDeFerramentas } from "../../shared/components";
+import { FerramentasDeListagem } from "../../shared/components";
 import { LayoutBasePagina } from "../../shared/layouts"
 
 
@@ -9,7 +9,7 @@ export const Dashboard: React.FC = () => {
          titulo='Página Inicial'
         barraDeFerramentas={
           (
-            <BarraDeFerramentas
+            <FerramentasDeListagem
             showSearchInput/>
           )
         }>
