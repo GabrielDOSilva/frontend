@@ -1,2 +1,3 @@
 export * from './sidebar/SideBar';
-export * from './barra-de-ferramentas/FerramentasDeListagem';
+export * from './ferramentas-de-listagem/FerramentasDeListagem';
+export * from './ferramentas-de-detalhes/FerramentasDeDetalhes';
