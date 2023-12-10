@@ -14,10 +14,10 @@ interface IListItemLinkProps {
     onClick?: () => void;
 };
 
-const ListItemLink: React.FC<IListItemLinkProps> = ({icon, label, to, onClick }) => {
+const ListItemLink: React.FC<IListItemLinkProps> = ({ icon, label, to, onClick }) => {
     const navigate = useNavigate();
     const resolvedPath = useResolvedPath(to);
-    const match = useMatch({path: resolvedPath.pathname, end: false});
+    const match = useMatch({ path: resolvedPath.pathname, end: false });
     const handleClick = () => {
         onClick?.();
         navigate(to);
@@ -54,10 +54,22 @@ export const SideBar: React.FC<IMenuProviderProps> = ({ children }) => {
                     <Box flex={1}>
                         <List component='nav'>
                             <ListItemLink
-                            icon='home'
-                            to='./pagina-inicial'
-                            label='Página inicial'
-                            onClick={smDown ? toggleDrawerOpen : undefined}
+                                icon='home'
+                                to='./pagina-inicial'
+                                label='Página inicial'
+                                onClick={smDown ? toggleDrawerOpen : undefined}
+                            />
+                            <ListItemLink
+                                icon='dvr'
+                                to='./os'
+                                label='OS System'
+                                onClick={smDown ? toggleDrawerOpen : undefined}
+                            />
+                            <ListItemLink
+                                icon='noteadd'
+                                to='./cadastro'
+                                label='Cadastro'
+                                onClick={smDown ? toggleDrawerOpen : undefined}
                             />
                         </List>
                     </Box>
