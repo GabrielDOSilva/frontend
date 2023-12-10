@@ -1,14 +1,11 @@
 import { LayoutBasePagina } from "../../shared/layouts"
 
-interface IDashboardProviderProps {
-    children: React.ReactNode
-};
 
-export const Dashboard = () => {
+export const Dashboard: React.FC = () => {
 
     return (
-        <LayoutBasePagina>
-            testando
+        <LayoutBasePagina titulo='Página Inicial' barraDeFerramentas={<>Barra de Ferramentas</>} >
+          Testando
         </LayoutBasePagina>
     );
 };
