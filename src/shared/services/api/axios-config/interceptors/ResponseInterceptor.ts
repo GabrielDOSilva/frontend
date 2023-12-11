@@ -1,4 +1,4 @@
-import { AxiosError, AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 
 
 export const responseInterceptor = (response: AxiosResponse) => {

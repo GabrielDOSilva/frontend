@@ -1,11 +1,12 @@
 import { Box, Button, Icon, Paper, TextField, useTheme } from "@mui/material"
 
 import { Environment } from "../../environments";
+import { Label } from "@mui/icons-material";
 
 interface FerramentasDeListagemProps {
     textSearch?: string;
     showSearchInput?: boolean;
-    changeTextSearche?: (text: string) => void; 
+    changeTextSearche?: (text: string) => void;
     textButtonNew?: string;
     showButtonNew?: boolean;
     clickOnButtonNew?: () => void;
@@ -18,7 +19,7 @@ export const FerramentasDeListagem: React.FC<FerramentasDeListagemProps> = ({
     clickOnButtonNew,
     textButtonNew = 'New',
     showButtonNew = true
-    
+
 }) => {
     const theme = useTheme();
 
@@ -34,14 +35,14 @@ export const FerramentasDeListagem: React.FC<FerramentasDeListagemProps> = ({
             component={Paper}
         >
 
-           {showSearchInput &&(
-             <TextField
-             size='small'
-             value={textSearch}
-             onChange={(e) => changeTextSearche?.(e.target.value)}
-             placeholder={Environment.INPUT_DE_BUSCA}
-         />
-           )}
+            {showSearchInput && (
+
+                <TextField
+                    size='small'
+                    value={textSearch}
+                    onChange={(e) => changeTextSearche?.(e.target.value)}
+                    placeholder={Environment.INPUT_DE_BUSCA} />
+            )}
             <Box
                 flex={1}
                 display='flex'
@@ -49,12 +50,12 @@ export const FerramentasDeListagem: React.FC<FerramentasDeListagemProps> = ({
             >
                 {showButtonNew && (
                     <Button
-                    color='primary'
-                    disableElevation
-                    variant='contained'
-                    onClick={clickOnButtonNew}
-                    endIcon={<Icon>add</Icon>}
-                >{textButtonNew}</Button>
+                        color='primary'
+                        disableElevation
+                        variant='contained'
+                        onClick={clickOnButtonNew}
+                        endIcon={<Icon>add</Icon>}
+                    >{textButtonNew}</Button>
                 )}
             </Box>
         </Box>
