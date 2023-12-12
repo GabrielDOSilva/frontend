@@ -1,118 +1,142 @@
 {
-    "clients": [
-        {
-            "id": "1",
-            "email": "gabriel@email.com",
-            "osId": "",
-            "name": "gabriel"
-        },
-        {
-            "id": "2",
-            "email": "adriane@email.com",
-            "osId": "",
-            "name": "adriane"
-        },
-        {
-            "id": "3",
-            "email": "maria@email.com",
-            "osId": "",
-            "name": "maria"
-        },
-        {
-            "id": "4",
-            "email": "matheus@email.com",
-            "osId": "",
-            "name": "matheus"
-        },
-        {
-            "id": "5",
-            "email": "wagner@email.com",
-            "osId": "",
-            "name": "wagner"
-        },
-        {
-            "id": "6",
-            "email": "rebeca@email.com",
-            "osId": "",
-            "name": "rebeca"
-        },
-        {
-            "id": "7",
-            "email": "nena@email.com",
-            "osId": "",
-            "name": "nena"
-        },
-        {
-            "id": "8",
-            "email": "lucia@email.com",
-            "osId": "",
-            "name": "lucia"
-        },
-        {
-            "id": "9",
-            "email": "liane@email.com",
-            "osId": "",
-            "name": "liane"
-        },
-        {
-            "id": "10",
-            "email": "elton@email.com",
-            "osId": "",
-            "name": "elton"
-        },
-        {
-            "id": "11",
-            "email": "amanda@email.com",
-            "osId": "",
-            "name": "amanda"
-        },
-        {
-            "id": "12",
-            "email": "daniel@email.com",
-            "osId": "",
-            "name": "daniel"
-        },
-        {
-            "id": 13,
-            "email": "margarida@gmail.com",
-            "osId:": "",
-            "name": "margarida Silva"
-        },
-        {
-            "id": 14,
-            "email": "carlos@gmail.com",
-            "osId:": "",
-            "name": "Carlos Silva"
-        },
-        {
-            "id": 154,
-            "email": "pedro@gmail.com",
-            "osId:": "",
-            "name": "Pedro Silva"
-        },
-        {
-            "id": 16,
-            "email": "alan@gmail.com",
-            "osId:": "",
-            "name": "alan Silva"
-        },
-        {
-            "id": 17,
-            "email": "aline@gmail.com",
-            "osId:": "",
-            "name": "aline Silva"
-        },
-        {
-            "id": 18,
-            "email": "tacila@gmail.com",
-            "osId:": "",
-            "name": "tacila Silva"
-        },
-        {
-            "id": 19,
-            "email": "levi@gmail.com",
-            "osId:": "",
-            "name": "levi Silva"
-        }
-    ]
+  "clients": [
+    {
+      "id": "1",
+      "name": "gabriel de oliveira silva",
+      "email": "gabriel@email.com",
+      "cpf": "123456710"
+    },
+    {
+      "id": "2",
+      "name": "adriane",
+      "email": "adriane@email.com",
+      "cpf": "12345678994"
+    },
+    {
+      "id": "3",
+      "name": "maria das dores",
+      "email": "mariadores@email.com",
+      "cpf": "98765432110"
+    },
+    {
+      "id": "4",
+      "email": "matheus@email.com",
+      "osId": "",
+      "name": "matheus"
+    },
+    {
+      "id": "5",
+      "email": "wagner@email.com",
+      "osId": "",
+      "name": "wagner"
+    },
+    {
+      "id": "6",
+      "email": "rebeca@email.com",
+      "osId": "",
+      "name": "rebeca"
+    },
+    {
+      "id": "7",
+      "email": "nena@email.com",
+      "osId": "",
+      "name": "nena"
+    },
+    {
+      "id": "8",
+      "email": "lucia@email.com",
+      "osId": "",
+      "name": "lucia"
+    },
+    {
+      "id": "9",
+      "email": "liane@email.com",
+      "osId": "",
+      "name": "liane"
+    },
+    {
+      "id": "10",
+      "email": "elton@email.com",
+      "osId": "",
+      "name": "elton"
+    },
+    {
+      "id": "11",
+      "email": "amanda@email.com",
+      "osId": "",
+      "name": "amanda"
+    },
+    {
+      "id": "12",
+      "email": "daniel@email.com",
+      "osId": "",
+      "name": "daniel"
+    },
+    {
+      "id": 13,
+      "email": "margarida@gmail.com",
+      "osId:": "",
+      "name": "margarida Silva"
+    },
+    {
+      "id": 14,
+      "email": "carlos@gmail.com",
+      "osId:": "",
+      "name": "Carlos Silva"
+    },
+    {
+      "id": 154,
+      "email": "pedro@gmail.com",
+      "osId:": "",
+      "name": "Pedro Silva"
+    },
+    {
+      "id": 16,
+      "email": "alan@gmail.com",
+      "osId:": "",
+      "name": "alan Silva"
+    },
+    {
+      "id": 17,
+      "email": "aline@gmail.com",
+      "osId:": "",
+      "name": "aline Silva"
+    },
+    {
+      "id": 18,
+      "email": "tacila@gmail.com",
+      "osId:": "",
+      "name": "tacila Silva"
+    },
+    {
+      "id": 19,
+      "email": "levi@gmail.com",
+      "osId:": "",
+      "name": "levi Silva"
+    },
+    {
+      "id": 155,
+      "name": "mariana silva",
+      "email": "mariana@email.com",
+      "cpf": "12345678910"
+    },
+    {
+      "id": 156,
+      "name": "",
+      "email": "",
+      "cpf": ""
+    },
+    {
+      "name": "",
+      "email": "",
+      "cpf": "",
+      "id": 157
+    },
+    {
+      "name": "kaio boiola",
+      "email": "kaiodabunda@email.com",
+      "cpf": "123456710",
+      "id": 158
+    }
+  ]
 }

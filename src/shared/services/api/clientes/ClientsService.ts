@@ -5,14 +5,14 @@ import { Environment } from "../../../environments";
 export interface IDetalhesClients {
     id: number;
     email: string;
-    osId: number;
     name: string;
+    cpf: number;
 };
 
 export interface IListClients {
     id: number;
     email: string;
-    osId: number;
+    cpf: number;
     name: string;
 };
 
@@ -62,7 +62,7 @@ const getById = async (id: number): Promise<IDetalhesClients | Error> => {
 const updateById = async (id: number, dados: IDetalhesClients): Promise<void | Error> => {
     try {
 
-        await Api.put(`/clietns/${id}`, dados);
+        await Api.put(`/clients/${id}`, dados);
         
 
     } catch (error) {
@@ -76,7 +76,7 @@ const updateById = async (id: number, dados: IDetalhesClients): Promise<void | E
 const deleteById = async (id: number): Promise<void | Error> => {
     try {
 
-        await Api.delete(`/clietns/${id}`);
+        await Api.delete(`/clients/${id}`);
         
 
     } catch (error) {
@@ -90,7 +90,7 @@ const deleteById = async (id: number): Promise<void | Error> => {
 const create = async (dados: Omit<IDetalhesClients, 'id'>): Promise<number | Error> => {
     try {
 
-        const { data} = await Api.post<IDetalhesClients>('/clietns', dados);
+        const { data} = await Api.post<IDetalhesClients>('/clients', dados);
         
         if ( data ) {
             return data.id; 

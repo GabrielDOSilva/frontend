@@ -68,7 +68,8 @@ export const ListagemDeClients: React.FC = () => {
             <TableRow>
               <TableCell>Ações</TableCell>
               <TableCell>Nome completo</TableCell>
-              <TableCell>Email</TableCell>
+              <TableCell>email</TableCell>
+              <TableCell>CPF</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -81,6 +82,7 @@ export const ListagemDeClients: React.FC = () => {
                 </TableCell>
                 <TableCell>{row.name}</TableCell>
                 <TableCell>{row.email}</TableCell>
+                <TableCell>{row.cpf}</TableCell>
               </TableRow>
             ))}
           </TableBody>
