@@ -103,3 +103,345 @@ export const ListagemDeClients: React.FC = () => {
         </LayoutBasePagina>
     );
 };
+
+
+
+
+
+ {isNewForm && !isEditing &&(
+                <Form ref={formRef} onSubmit={handleSave}>
+                    <Grid item component={Paper} variant='outlined' margin={1} padding={1}>
+                        <Typography align='center' margin={1} variant="h4"><strong>Novo Cliente</strong></Typography>
+
+
+
+                        <>
+                            <Grid item xs={12}>
+                                <Divider />
+                            </Grid>
+                            <Grid container>
+
+                                <Typography margin={1} variant='h5'><strong>Dados gerais</strong></Typography>
+                            </Grid>
+                            <br />
+                            <Grid container spacing={3}>
+                                <Grid item xs={12} sm={6} md={4} lg={3}>
+                                    <Typography margin={1}><strong>Nome</strong></Typography>
+                                    <VTextField
+                                        fullWidth
+                                        name="firstName"
+                                        value={editedData?.firstName}
+                                        placeholder={editedData?.firstName}
+
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={6} md={4} lg={5}>
+                                    <Typography margin={1}><strong>Sobrenome</strong></Typography>
+                                    <VTextField
+                                        fullWidth
+                                        name="lastName"
+                                        value={editedData?.lastName}
+                                        placeholder={editedData?.lastName}
+
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={6} md={4} lg={4}>
+                                    <Typography margin={1}><strong>CPF</strong></Typography>
+                                    <VTextField
+                                        fullWidth
+                                        name="cpf"
+                                        value={editedData?.cpf}
+                                        placeholder={editedData?.cpf ? String(editedData?.cpf) : ''}
+
+                                    />
+                                </Grid>
+
+                            </Grid>
+                            <br />
+                            <Grid item sx={{ width: 'auto' }}>
+                                <Typography margin={1} variant='h5'><strong>Dados de contato</strong></Typography>
+                            </Grid>
+                            <br />
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={8} md={4}>
+                                    <Typography margin={1}><strong>Telefone</strong></Typography>
+                                    <VTextField
+                                        fullWidth
+                                        name="tellFixo"
+                                        value={editedData?.tellFixo}
+                                        placeholder={editedData?.tellFixo ? String(editedData?.tellFixo) : ''}
+
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={8} md={4}>
+                                    <Typography margin={1}><strong>Celular</strong></Typography>
+                                    <VTextField
+                                        fullWidth
+                                        name="celular"
+                                        value={editedData?.celular}
+                                        placeholder={editedData?.celular ? String(editedData?.celular) : ''}
+
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={8} md={4}>
+                                    <Typography margin={1}><strong>Email</strong></Typography>
+                                    <VTextField
+                                        fullWidth
+                                        name="email"
+                                        value={editedData?.email}
+                                        placeholder={editedData?.email}
+
+                                    />
+                                </Grid>
+
+                            </Grid>
+                            <br />
+                            <Grid item sx={{ width: 'auto' }}>
+                                <Typography margin={1} variant='h5'><strong>Endereço</strong></Typography>
+                            </Grid>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={8} md={4}>
+                                    <Typography margin={1}><strong>Rua</strong></Typography>
+                                    <VTextField
+                                        fullWidth
+                                        name="street"
+                                        value={editedData?.street}
+                                        placeholder={editedData?.street}
+
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={8} md={4}>
+                                    <Typography margin={1}><strong>Cidade</strong></Typography>
+                                    <VTextField
+                                        fullWidth
+                                        name="city"
+                                        value={editedData?.city}
+                                        placeholder={editedData?.city}
+
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={8} md={4}>
+                                    <Typography margin={1}><strong>Estado</strong></Typography>
+                                    <VTextField
+                                        fullWidth
+                                        name="estate"
+                                        value={editedData?.state}
+                                        placeholder={editedData?.state}
+
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={8} md={4}>
+                                    <Typography margin={1}><strong>CEP</strong></Typography>
+                                    <VTextField
+                                        fullWidth
+                                        name="email"
+                                        value={editedData?.postalCode}
+                                        placeholder={editedData?.postalCode ? String(editedData?.postalCode) : ''}
+
+                                    />
+                                </Grid>
+
+                            </Grid>
+
+
+                        </>
+
+                    </Grid>
+
+
+                    {/* ... (outros detalhes do cliente) */}
+                </Form>
+
+            )}
+            {!isEditing && clientData ? (
+
+                <>
+                    <Grid item container component={Paper} spacing={1} style={{ display: hideTypography ? 'none' : 'flex' }} sx={{ m: 1, p: 2, width: 'auto' }}>
+                        <Grid item xs={6}>
+                            <Typography variant="h6"><strong>{`Nome:`}</strong></Typography>
+                            <br />
+                            <Typography>{`${clientData?.firstName} ${clientData?.lastName}`}</Typography>
+                            <br />
+                            <Typography><strong>CPF:    </strong> {clientData?.cpf}</Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Typography variant="h6"><strong>Informações de Contato</strong></Typography>
+                            <br />
+                            <Typography><strong>Email:</strong> {clientData?.email}</Typography>
+                            <Typography><strong>Telefone:</strong> {clientData?.tellFixo || 'Não disponível'}</Typography>
+                            <Typography><strong>Celular:</strong> {clientData?.celular || 'Não disponível'}</Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Typography variant="h6"><strong>Endereço</strong></Typography>
+                            <br />
+                            <Typography><strong>Rua:</strong> {clientData?.street}</Typography>
+                            <Typography><strong>Cidade:</strong> {clientData?.city}</Typography>
+                            <Typography><strong>Estado:</strong> {clientData?.state}</Typography>
+                            <Typography><strong>CEP:</strong> {clientData?.postalCode}</Typography>
+                        </Grid>
+
+                        <Grid container display='flx' alignItems='right' justifyContent="right">
+                            <IconButton
+                                component={Paper}
+                                onClick={handleEditClick}>
+                                <Icon>edit</Icon>
+                            </IconButton>
+                        </Grid>
+                    </Grid>
+                </>
+
+            ) : (
+
+                <Form ref={formRef} onSubmit={handleSave}>
+
+                    <Grid item component={Paper} variant='outlined' margin={1} padding={1}>
+                        <Typography align='center' margin={1} variant="h4"><strong>Detalhes do Cliente</strong></Typography>
+                        {!!isEditing ? (
+                            <IconButton onClick={handleEditClick}>
+                                <Icon>edit</Icon>
+                            </IconButton>
+                        ) : (
+                            <>
+                                <Grid item xs={12}>
+                                    <Divider />
+                                </Grid>
+                                <Grid container>
+
+                                    <Typography margin={1} variant='h5'><strong>Dados gerais</strong></Typography>
+                                </Grid>
+                                <br />
+                                <Grid container spacing={3}>
+                                    <Grid item xs={12} sm={6} md={4} lg={3}>
+                                        <Typography margin={1}><strong>Nome</strong></Typography>
+                                        <VTextField
+                                            fullWidth
+                                            name="firstName"
+                                            value={editedData?.firstName}
+                                            placeholder={editedData?.firstName}
+
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6} md={4} lg={5}>
+                                        <Typography margin={1}><strong>Sobrenome</strong></Typography>
+                                        <VTextField
+                                            fullWidth
+                                            name="lastName"
+                                            value={editedData?.lastName}
+                                            placeholder={editedData?.lastName}
+
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6} md={4} lg={4}>
+                                        <Typography margin={1}><strong>CPF</strong></Typography>
+                                        <VTextField
+                                            fullWidth
+                                            name="cpf"
+                                            value={editedData?.cpf}
+                                            placeholder={editedData?.cpf ? String(editedData?.cpf) : ''}
+
+                                        />
+                                    </Grid>
+
+                                </Grid>
+                                <br />
+                                <Grid item sx={{ width: 'auto' }}>
+                                    <Typography margin={1} variant='h5'><strong>Dados de contato</strong></Typography>
+                                </Grid>
+                                <br />
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} sm={8} md={4}>
+                                        <Typography margin={1}><strong>Telefone</strong></Typography>
+                                        <VTextField
+                                            fullWidth
+                                            name="tellFixo"
+                                            value={editedData?.tellFixo}
+                                            placeholder={editedData?.tellFixo ? String(editedData?.tellFixo) : ''}
+
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={8} md={4}>
+                                        <Typography margin={1}><strong>Celular</strong></Typography>
+                                        <VTextField
+                                            fullWidth
+                                            name="celular"
+                                            value={editedData?.celular}
+                                            placeholder={editedData?.celular ? String(editedData?.celular) : ''}
+
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={8} md={4}>
+                                        <Typography margin={1}><strong>Email</strong></Typography>
+                                        <VTextField
+                                            fullWidth
+                                            name="email"
+                                            value={editedData?.email}
+                                            placeholder={editedData?.email}
+
+                                        />
+                                    </Grid>
+
+                                </Grid>
+                                <br />
+                                <Grid item sx={{ width: 'auto' }}>
+                                    <Typography margin={1} variant='h5'><strong>Endereço</strong></Typography>
+                                </Grid>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} sm={8} md={4}>
+                                        <Typography margin={1}><strong>Rua</strong></Typography>
+                                        <VTextField
+                                            fullWidth
+                                            name="street"
+                                            value={editedData?.street}
+                                            placeholder={editedData?.street}
+
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={8} md={4}>
+                                        <Typography margin={1}><strong>Cidade</strong></Typography>
+                                        <VTextField
+                                            fullWidth
+                                            name="city"
+                                            value={editedData?.city}
+                                            placeholder={editedData?.city}
+
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={8} md={4}>
+                                        <Typography margin={1}><strong>Estado</strong></Typography>
+                                        <VTextField
+                                            fullWidth
+                                            name="estate"
+                                            value={editedData?.state}
+                                            placeholder={editedData?.state}
+
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={8} md={4}>
+                                        <Typography margin={1}><strong>CEP</strong></Typography>
+                                        <VTextField
+                                            fullWidth
+                                            name="email"
+                                            value={editedData?.postalCode}
+                                            placeholder={editedData?.postalCode ? String(editedData?.postalCode) : ''}
+
+                                        />
+                                    </Grid>
+
+                                </Grid>
+
+
+                            </>
+                        )}
+                    </Grid>
+
+
+                    {/* ... (outros detalhes do cliente) */}
+
+
+                </Form>
+            )}
+
+
+
+        </LayoutBasePagina>
+    );

@@ -2,12 +2,11 @@ import { useEffect, useMemo, useState } from 'react';
 import { Icon, IconButton, LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from '@mui/material';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import { IListClients, ClientsService, } from '../../shared/services/api/clientes/ClientsService';
+import { IListClients, ClientsService } from '../../shared/services/api/clientes/ClientsService';
 import { FerramentasDeListagem } from '../../shared/components';
 import { LayoutBasePagina } from '../../shared/layouts';
 import { useDebounce } from '../../shared/hooks';
 import { Environment } from '../../shared/environments';
-
 
 export const ListagemDeClients: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,7 +17,6 @@ export const ListagemDeClients: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [totalCount, setTotalCount] = useState(0);
 
-
   const busca = useMemo(() => {
     return searchParams.get('busca') || '';
   }, [searchParams]);
@@ -27,38 +25,47 @@ export const ListagemDeClients: React.FC = () => {
     return Number(searchParams.get('pagina') || '1');
   }, [searchParams]);
 
-
   useEffect(() => {
     setIsLoading(true);
-
-    debounce(() => {
-      return ClientsService.getAll(pagina, busca)
-        .then((result) => {
-          setIsLoading(false);
-
-          if (result instanceof Error) {
-            alert(result.message);
-          } else {
-            console.log(result);
-
-            setTotalCount(result.totalCount);
-            setRows(result.data);
-          }
-        });
+  
+    const fetchClientData = async () => {
+      try {
+        const result = await ClientsService.getAll(pagina, busca);
+        setIsLoading(false);
+  
+        if (result instanceof Error) {
+          alert(result.message);
+        } else {
+          setTotalCount(result.totalCount);
+          setRows(result.data);
+        }
+      } catch (error) {
+        console.error(error);
+        setIsLoading(false);
+        alert('Erro ao buscar clientes.');
+      }
+    };
+  
+    const delayedFetch = debounce(() => {
+      fetchClientData();
     });
+  
+   // Executa a busca inicial ao montar o componente
+  
+    return; // Cancela o debounce ao desmontar o componente
   }, [busca, pagina]);
-
+  
 
   return (
     <LayoutBasePagina
-      titulo='Listagem de pessoas'
+      titulo='Listagem de clientes'
       barraDeFerramentas={
         <FerramentasDeListagem
           showSearchInput
           textSearch={busca}
           textButtonNew='Nova'
           clickOnButtonNew={() => navigate('/clients/detalhes/nova')}
-          changeTextSearche={texto => setSearchParams({ busca: texto, pagina: '1' }, { replace: true })}
+          changeTextSearche={(texto) => setSearchParams({ busca: texto, pagina: '1' }, { replace: true })}
         />
       }
     >
@@ -73,16 +80,16 @@ export const ListagemDeClients: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
+            {rows.map((row) => (
               <TableRow key={row.id}>
                 <TableCell>
                   <IconButton onClick={() => navigate(`/clients/detalhes/${row.id}`)}>
                     <Icon>edit</Icon>
                   </IconButton>
                 </TableCell>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.email}</TableCell>
-                <TableCell>{row.cpf}</TableCell>
+                <TableCell>{`${row.firstName || ''} ${row.lastName || ''}`}</TableCell>
+                <TableCell>{row.email || ''}</TableCell>
+                <TableCell>{row.cpf || ''}</TableCell>
               </TableRow>
             ))}
           </TableBody>
