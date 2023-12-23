@@ -1,25 +1,42 @@
-import { useEffect, useRef, useState } from 'react';
+import * as yup from 'yup';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Divider, Grid, Icon, IconButton, Paper, Typography } from '@mui/material';
+
+
+
 import { LayoutBasePagina } from '../../shared/layouts';
 import { FerramentasDeDetalhes } from '../../shared/components';
 import { ClientsService, IDetalhesClients } from '../../shared/services/api';
-import { VTextField, VForm, useVForms } from '../../shared/form';
-import { Divider, Grid, Icon, IconButton, Paper, Typography } from '@mui/material';
+import { VTextField, VForm, useVForms, IVFormserros } from '../../shared/form';
+
 
 interface IFormsData {
     email: string;
-    tellFixo: number;
-    celular: number;
+    tellFixo: string;
+    celular: string;
     firstName: string;
     lastName: string;
-    cpf: number;
+    cpf: string;
     street: string;
     city: string;
     state: string;
     postalCode: string;
 
-}
+};
 
+const formValidationData: yup.Schema<IFormsData> = yup.object().shape({
+    email: yup.string().required().min(15),
+    firstName: yup.string().required().min(3),
+    lastName: yup.string().required().min(3),
+    street: yup.string().required().min(10),
+    city: yup.string().required().min(3),
+    state: yup.string().required().min(4),
+    postalCode: yup.string().required().min(8),
+    cpf: yup.string().required().min(11),
+    tellFixo: yup.string().required().min(10),
+    celular: yup.string().required().min(11),
+});
 
 
 
@@ -85,45 +102,60 @@ export const DetalheDeClients: React.FC = () => {
 
 
     const handleSave = (dados: IFormsData) => {
-        setIsLoading(true);
-        if (id !== 'nova') {
-            ClientsService.updateById(Number(id), { id: Number(id), ...dados })
-                .then((result) => {
-                    setIsLoading(false);
-                    if (result instanceof Error) {
-                        alert(result.message);
-                    } else {
-                        if (isSaveAndClose()) {
-                            navigate('/clients');
-                        } else {
-                            navigate(`/clients/detalhes/${id}`)
-                        }
-                    }
-                })
-        } else {
-            ClientsService.create(dados)
-                .then((result) => {
 
-                    setIsLoading(false);
-                    
-                    if (result instanceof Error) {
-                        alert(result.message)
-                    } else {
+        formValidationData.
+            validate(dados, { abortEarly: false })
+            .then((dadosValidados) => {
+                setIsLoading(true);
 
-                        if (isSaveAndClose()) {
-                            navigate('/clients');
+                if (id !== 'nova') {
+                    ClientsService.updateById(Number(id), { id: Number(id), ...dados })
+                        .then((result) => {
+                            setIsLoading(false);
+                            if (result instanceof Error) {
+                                alert(result.message);
+                            } else {
+                                if (isSaveAndClose()) {
+                                    navigate('/clients');
+                                } else {
+                                    navigate(`/clients/detalhes/${id}`)
+                                }
+                            }
+                        })
+                } else {
+                    ClientsService.create(dadosValidados)
+                        .then((result) => {
 
-                        } else {
-                            navigate(`/clients/detalhes/${result}`);
-                        };
-                    };
+                            setIsLoading(false);
+
+                            if (result instanceof Error) {
+                                alert(result.message)
+                            } else {
+
+                                if (isSaveAndClose()) {
+                                    navigate('/clients');
+
+                                } else {
+                                    navigate(`/clients/detalhes/${result}`);
+                                };
+                            };
 
 
+                        });
+                    setHideTypography(false);
+                    setIsNewForm(false)
+                };
+
+            })
+            .catch((errors: yup.ValidationError) => {
+                const validationErrors: IVFormserros = {};
+
+                errors.inner.forEach(error => {
+                    if (!error.path) return;
+                    validationErrors[error.path] = error.message;
                 });
-            setHideTypography(false);
-            setIsNewForm(false)
-        };
-
+                formRef.current?.setErrors(validationErrors);
+            });
     };
 
 
@@ -268,6 +300,8 @@ export const DetalheDeClients: React.FC = () => {
 
                                     />
                                 </Grid>
+                            </Grid>
+                            <Grid container spacing={2}>
                                 <Grid item xs={12} sm={8} md={4}>
                                     <Typography margin={1}><strong>CEP</strong></Typography>
                                     <VTextField
@@ -278,8 +312,6 @@ export const DetalheDeClients: React.FC = () => {
                                 </Grid>
 
                             </Grid>
-
-
                         </>
 
                     </Grid>

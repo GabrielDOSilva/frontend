@@ -5,11 +5,11 @@ import { Environment } from "../../../environments";
 export interface IDetalhesClients {
     id: number;
     email: string;
-    tellFixo: number;
-    celular: number;
+    tellFixo: string;
+    celular: string;
     firstName: string;
     lastName: string;
-    cpf: number;
+    cpf: string;
     street: string;
     city: string;
     state: string;
@@ -22,13 +22,13 @@ export interface IListClients {
     id: number;
     email: string;
 
-    tellFixo: number;
-    celular: number;
+    tellFixo: string;
+    celular: string;
 
     firstName: string;
     lastName: string;
 
-    cpf: number;
+    cpf: string;
 
     street: string;
     city: string;
@@ -108,11 +108,11 @@ type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 type CreateClientData = Omit<IDetalhesClients, 'id'> & {
     email: string;
-    tellFixo: number;
-    celular: number;
+    tellFixo: string;
+    celular: string;
     firstName: string;
     lastName: string;
-    cpf: number;
+    cpf: string;
     street: string;
     city: string;
     state: string;
