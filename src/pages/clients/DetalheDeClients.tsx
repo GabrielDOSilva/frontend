@@ -4,7 +4,6 @@ import { LayoutBasePagina } from '../../shared/layouts';
 import { FerramentasDeDetalhes } from '../../shared/components';
 import { ClientsService, IDetalhesClients } from '../../shared/services/api';
 import { VTextField, VForm, useVForms } from '../../shared/form';
-import { FormHandles } from '@unform/core';
 import { Divider, Grid, Icon, IconButton, Paper, Typography } from '@mui/material';
 
 interface IFormsData {
@@ -106,9 +105,11 @@ export const DetalheDeClients: React.FC = () => {
                 .then((result) => {
 
                     setIsLoading(false);
+                    
                     if (result instanceof Error) {
                         alert(result.message)
                     } else {
+
                         if (isSaveAndClose()) {
                             navigate('/clients');
 
@@ -150,8 +151,9 @@ export const DetalheDeClients: React.FC = () => {
                     textButtonNew='Nova'
                     showButtonSalveBack={id === 'nova' || isEditing}
                     showButtonSalve={id === 'nova' || isEditing}
-                    showButtonNew={id !== 'nova'}
+                    showButtonNew={id !== 'nova' && !isEditing}
                     showButtonDelete={id !== 'nova' && !isEditing}
+                    showButtonBack
                     clickOnButtonSalve={save}
                     clickOnButtonBack={() => { navigate('/clients') }}
                     clickOnButtonDelete={() => handleDelete(Number(id))}
@@ -164,9 +166,6 @@ export const DetalheDeClients: React.FC = () => {
                 <VForm ref={formRef} onSubmit={handleSave}>
                     <Grid item component={Paper} variant='outlined' margin={1} padding={1}>
                         <Typography align='center' margin={1} variant="h4"><strong>Cadastro de cliente</strong></Typography>
-
-
-
                         <>
                             <Grid item xs={12}>
                                 <Divider />

@@ -9,7 +9,7 @@ export const Dashboard: React.FC = () => {
          titulo='Página Inicial'
         barraDeFerramentas={
           (
-            <FerramentasDeDetalhes showButtonSalveBack/>
+            <FerramentasDeDetalhes showButtonBack/>
           )
         }>
 
